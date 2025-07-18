@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emissão de Notas Fiscais - M.Schuenker</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <div class="logo">
+                    <h2>M.Schuenker</h2>
+                    <span>Sistema de Identificação de Peças</span>
+                </div>
+            </div>
+            
+            <div class="header-center">
+                <div class="search-container">
+                    <input type="text" id="aiSearch" placeholder="Busque por peças, códigos ou aplicações..." class="ai-search">
+                    <div class="search-suggestions" id="searchSuggestions"></div>
+                </div>
+            </div>
+            
+            <div class="header-right">
+                <button class="user-menu">
+                    <span>Usuário</span>
+                </button>
+                <button class="logout-btn" onclick="window.location.href='../index.html'">Sair</button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1 class="page-title">Emissão de Notas Fiscais</h1>
+                <p class="page-description">Gere notas fiscais para vendas de peças</p>
+            </div>
+            
+            <div class="content-grid">
+                <!-- Dados do Cliente -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Dados do Cliente</h3>
+                    </div>
+                    
+                    <form id="dadosClienteForm">
+                        <div class="form-group">
+                            <label class="form-label">Nome/Razão Social *</label>
+                            <input type="text" class="form-input" id="nomeCliente" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">CPF/CNPJ *</label>
+                            <input type="text" class="form-input" id="documentoCliente" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-input" id="emailCliente">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Telefone</label>
+                            <input type="tel" class="form-input" id="telefoneCliente">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Endereço</label>
+                            <textarea class="form-input" id="enderecoCliente" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Adicionar Itens -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Adicionar Itens</h3>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Buscar Peça</label>
+                        <input type="text" class="form-input" id="buscaPeca" placeholder="Digite código ou nome da peça">
+                        <div id="sugestoesPecas" class="search-suggestions"></div>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;">
+                        <div class="form-group">
+                            <label class="form-label">Quantidade</label>
+                            <input type="number" class="form-input" id="quantidade" min="1" value="1">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Preço Unit. (R$)</label>
+                            <input type="number" class="form-input" id="precoUnitario" step="0.01" min="0">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Desconto (%)</label>
+                            <input type="number" class="form-input" id="desconto" min="0" max="100" value="0">
+                        </div>
+                    </div>
+                    
+                    <button type="button" class="btn" onclick="adicionarItem()">Adicionar Item</button>
+                </div>
+                
+                <!-- Lista de Itens -->
+                <div class="card" style="grid-column: span 2;">
+                    <div class="card-header">
+                        <h3 class="card-title">Itens da Nota Fiscal</h3>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Código</th>
+                                    <th>Descrição</th>
+                                    <th>Qtd</th>
+                                    <th>Preço Unit.</th>
+                                    <th>Desconto</th>
+                                    <th>Total</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="itensNota">
+                                <tr>
+                                    <td colspan="7" style="text-align: center; color: #6b7280; padding: 40px;">
+                                        Nenhum item adicionado
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div style="margin-top: 20px; padding: 20px; background: #f8fafc; border-radius: 8px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">R$ 0,00</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                            <span>Desconto Total:</span>
+                            <span id="descontoTotal">R$ 0,00</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; font-weight: 600; font-size: 18px; border-top: 1px solid #e5e7eb; padding-top: 8px;">
+                            <span>Total Geral:</span>
+                            <span id="totalGeral">R$ 0,00</span>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 20px; display: flex; gap: 12px;">
+                        <button type="button" class="btn" onclick="gerarNotaFiscal()">Gerar Nota Fiscal</button>
+                        <button type="button" class="btn btn-secondary" onclick="limparNota()">Limpar Tudo</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal de Nota Fiscal -->
+    <div id="modalNota" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000;">
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 30px; border-radius: 12px; max-width: 800px; width: 90%; max-height: 90%; overflow-y: auto;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2>Nota Fiscal de Venda</h2>
+                <button onclick="fecharModal()" style="background: none; border: none; font-size: 24px; cursor: pointer;">&times;</button>
+            </div>
+            
+            <div id="conteudoNota"></div>
+            
+            <div style="margin-top: 20px; display: flex; gap: 12px; justify-content: flex-end;">
+                <button class="btn btn-secondary" onclick="fecharModal()">Fechar</button>
+                <button class="btn" onclick="imprimirNota()">Imprimir</button>
+                <button class="btn" onclick="salvarPDF()">Salvar PDF</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/emissao-notas.js"></script>
+</body>
+</html>
