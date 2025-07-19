@@ -85,6 +85,15 @@ document.addEventListener('DOMContentLoaded', function() {
             // Reset form
             loginForm.reset();
         }
+        
+        // Handle modal cadastro button
+        if (e.target && e.target.id === 'btnAbrirModalCadastro') {
+            e.preventDefault();
+            const modal = document.getElementById('modalCadastroPeca');
+            if (modal) {
+                modal.style.display = 'block';
+            }
+        }
     });
 
     // Load dashboard content
@@ -231,6 +240,9 @@ function loadPage(page) {
         case 'manutencao':
             loadManutencaoPage();
             break;
+        case 'emissao-notas':
+            window.location.href = 'pages/emissao-notas.html';
+            break;
         default:
             loadDashboardContent();
     }
@@ -327,6 +339,36 @@ function loadDashboardContent() {
                 </div>
                 <p class="card-description">Sistema de manutenção com compatibilidade de peças.</p>
                 <button class="btn" onclick="loadPage('manutencao')">Acessar</button>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2"/>
+                            <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Cadastro de Peças</h3>
+                </div>
+                <p class="card-description">Adicione novas peças ao sistema com formulário completo.</p>
+                <button class="btn" onclick="window.location.href='pages/cadastro-pecas.html'">Acessar</button>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M14 2V8H20" stroke="currentColor" stroke-width="2"/>
+                            <path d="M16 13H8M16 17H8M10 9H8" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Emissão de Notas</h3>
+                </div>
+                <p class="card-description">Gere notas fiscais para vendas de peças aos clientes.</p>
+                <button class="btn" onclick="window.location.href='pages/emissao-notas.html'">Acessar</button>
             </div>
         </div>
     `;
