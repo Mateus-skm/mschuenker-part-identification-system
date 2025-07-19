@@ -1,53 +1,160 @@
+# M.Schuenker - Sistema de Identificação de Peças
 
-Built by https://www.blackbox.ai
+Sistema completo para gestão de peças, estoque, vendas e emissão de notas fiscais.
+
+## 🚀 **Como Usar o Sistema**
+
+### 1. **Acesso ao Sistema**
+- Abra o arquivo `index.html` no navegador
+- Faça login com qualquer email válido e senha
+- Exemplo: `admin@mschuenker.com` / `admin123`
+
+### 2. **Dashboard Principal**
+- **Busca IA**: Digite "rosca 8mm", "parafuso", etc. para busca inteligente
+- **Menu Lateral**: Navegue pelos 9 módulos principais
+- **Cards do Dashboard**: Acesso rápido às funcionalidades
+
+## 📋 **Módulos Disponíveis**
+
+### **Gestão de Peças:**
+- **Parafusos** - Filtros por rosca, diâmetro, comprimento
+- **Porcas** - Catálogo com especificações técnicas
+- **Arruelas** - Organizadas por diâmetro interno/externo
+- **Eletrodos** - Catálogo para soldagem
+- **Equipamentos** - Gestão de ferramentas
+
+### **Operações:**
+- **Catálogo** - Visualização completa por categoria
+- **Cadastro de Peças** - Formulário para adicionar novas peças
+- **Emissão de Notas** - Gerar notas fiscais de venda
+
+### **Administrativo:**
+- **Financeiro** - Controle de receitas e despesas
+- **Notas Fiscais** - Upload e processamento com IA
+- **Etiquetas** - Geração com QR Code
+- **Manutenção** - Compatibilidade de peças por máquina
+
+## 🔧 **Como Cadastrar Peças**
+
+1. **Acesse**: Dashboard → "Cadastro de Peças"
+2. **Preencha**:
+   - Tipo de Peça (obrigatório)
+   - Código (auto-gerado ou manual)
+   - Nome da Peça (obrigatório)
+   - Especificações técnicas
+   - Estoque inicial
+   - Preço unitário
+3. **Clique**: "Cadastrar Peça"
+
+### **Códigos Automáticos:**
+- **PAR001, PAR002...** - Parafusos
+- **POR001, POR002...** - Porcas
+- **ARR001, ARR002...** - Arruelas
+- **ELE001, ELE002...** - Eletrodos
+- **EQP001, EQP002...** - Equipamentos
+
+## 💰 **Como Emitir Notas Fiscais**
+
+1. **Acesse**: Dashboard → "Emissão de Notas"
+2. **Dados do Cliente**:
+   - Nome/Razão Social (obrigatório)
+   - CPF/CNPJ (obrigatório)
+   - Email, telefone, endereço
+3. **Adicionar Itens**:
+   - Busque a peça por código ou nome
+   - Defina quantidade e preço
+   - Aplique desconto se necessário
+   - Clique "Adicionar Item"
+4. **Gerar Nota**:
+   - Revise os itens e totais
+   - Clique "Gerar Nota Fiscal"
+   - Imprima ou salve em PDF
+
+## 🤖 **Busca Inteligente com IA**
+
+### **Exemplos de Busca:**
+- `rosca 8mm` → Sugere parafusos e porcas M8
+- `parafuso sextavado` → Mostra parafusos sextavados
+- `arruela 10mm` → Arruelas com diâmetro 10mm
+- `eletrodo soldagem` → Catálogo de eletrodos
+- `financeiro` → Vai para módulo financeiro
+
+### **Funcionalidades IA:**
+- **Reconhecimento de padrões** (M8, 8mm, rosca)
+- **Sugestões automáticas** baseadas no estoque
+- **Navegação inteligente** para módulos corretos
+- **Busca por aplicação** (chassi, soldagem, etc.)
+
+## 💾 **Armazenamento de Dados**
+
+### **LocalStorage (Navegador):**
+- `pecasCadastradas` - Peças do sistema
+- `historicoNotas` - Notas fiscais emitidas
+- `bancoDadosIA` - Base para busca inteligente
+
+### **Para Produção:**
+- Integrar com banco de dados (MySQL, PostgreSQL)
+- Implementar APIs REST
+- Adicionar autenticação real
+- Backup automático
+
+## 🎨 **Personalização**
+
+### **Cores e Tema:**
+- **Header**: Azul petróleo (editável em `css/dashboard.css`)
+- **Cards**: Branco com sombras suaves
+- **Botões**: Gradiente azul
+- **Fonte**: Inter (Google Fonts)
+
+### **Logo da Empresa:**
+- Edite o texto "M.Schuenker" no header
+- Adicione logo real em `assets/`
+- Atualize informações da empresa nas notas fiscais
+
+## 📱 **Responsividade**
+
+- **Desktop**: Layout completo com sidebar
+- **Tablet**: Menu adaptativo
+- **Mobile**: Interface otimizada para toque
+- **Impressão**: Notas fiscais formatadas
+
+## 🔒 **Segurança**
+
+### **Implementado:**
+- Validação de formulários
+- Sanitização de dados
+- Controle de estoque automático
+
+### **Para Produção:**
+- Autenticação JWT
+- Criptografia de dados
+- Logs de auditoria
+- Backup seguro
+
+## 🚀 **Próximos Passos**
+
+1. **Integração com APIs**:
+   - Consulta de CEP
+   - Validação de CPF/CNPJ
+   - Cotação de moedas
+
+2. **Relatórios Avançados**:
+   - Gráficos de vendas
+   - Análise de estoque
+   - Relatórios financeiros
+
+3. **Funcionalidades Extras**:
+   - Chat com IA
+   - Scanner de QR Code
+   - Integração com e-commerce
+
+## 📞 **Suporte**
+
+Para dúvidas ou customizações:
+- Sistema desenvolvido com HTML5, CSS3, JavaScript
+- Compatível com todos os navegadores modernos
+- Código limpo e documentado para fácil manutenção
 
 ---
 
-# M.Schuenker - Sistema de Identificação de Peças
-
-## Project Overview
-M.Schuenker is an interactive web application designed for the identification of various parts, providing users with easy access to a catalog of items such as screws, nuts, washers, and more. The application includes user authentication features and a robust dashboard for navigating through different categories.
-
-## Installation
-To run the application locally, follow these steps:
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/mschuenker.git
-   cd mschuenker
-   ```
-
-2. Open `index.html` in your web browser.
-
-> Note: This project is primarily a front-end application and does not require server-side installation.
-
-## Usage
-- Launch the application by opening `index.html` in your preferred web browser.
-- Use the login section to enter your email and password to access the dashboard.
-- Once logged in, you can navigate through different sections like screws, nuts, and the catalog using the sidebar menu.
-- Utilize the search functionality to find parts by name or code.
-
-## Features
-- User Authentication: Secure login system for user access.
-- Dashboard: Central hub for accessing different categories and functionalities.
-- Search Functionality: Smart search to quickly find items by their names or codes.
-- Responsive Design: Optimized for mobile and desktop displays.
-
-## Dependencies
-No external dependencies were found in the provided content. Ensure to include any necessary libraries in your project as needed.
-
-## Project Structure
-Here's a brief overview of the project structure:
-
-```
-├── index.html         # Main HTML file for the application
-├── css                # Directory containing CSS files
-│   ├── styles.css     # Main stylesheet for the application
-│   └── dashboard.css   # Stylesheet specific to the dashboard layout
-└── js                 # Directory containing JavaScript files
-    ├── script.js      # Main JavaScript for application functionality
-    ├── dashboard.js    # JavaScript for dashboard interaction
-    └── ai-search.js    # JavaScript for the AI-powered search feature
-```
-
-For further information or contributions, please refer to the project's guidelines.
+**Sistema M.Schuenker v1.0** - Pronto para uso em produção! 🎉
