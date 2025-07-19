@@ -27,158 +27,204 @@
             </div>
             
             <div class="header-right">
-                <button class="user-menu">
-                    <span>Usuário</span>
-                </button>
+                <button class="btn" onclick="window.location.href='../index.html'">Voltar ao Dashboard</button>
                 <button class="logout-btn" onclick="window.location.href='../index.html'">Sair</button>
             </div>
         </header>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="nav-menu">
+                <button class="nav-item" onclick="window.location.href='../index.html'">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke="currentColor" stroke-width="2"/>
+                        <path d="M9 22V12H15V22" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    Dashboard
+                </button>
+                <button class="nav-item active">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="currentColor" stroke-width="2"/>
+                        <path d="M14 2V8H20" stroke="currentColor" stroke-width="2"/>
+                        <path d="M16 13H8M16 17H8M10 9H8" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    Emissão de Notas
+                </button>
+            </nav>
+        </aside>
 
         <!-- Main Content -->
         <main class="main-content">
             <div class="page-header">
                 <h1 class="page-title">Emissão de Notas Fiscais</h1>
-                <p class="page-description">Gere notas fiscais para vendas de peças</p>
+                <p class="page-description">Gere notas fiscais para vendas de peças aos clientes</p>
             </div>
-            
+
             <div class="content-grid">
                 <!-- Dados do Cliente -->
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Dados do Cliente</h3>
                     </div>
-                    
-                    <form id="dadosClienteForm">
-                        <div class="form-group">
-                            <label class="form-label">Nome/Razão Social *</label>
-                            <input type="text" class="form-input" id="nomeCliente" required>
+                    <form id="formCliente">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Tipo Pessoa *</label>
+                                <select class="form-select" id="tipoPessoa" required>
+                                    <option value="fisica">Pessoa Física</option>
+                                    <option value="juridica">Pessoa Jurídica</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Nome/Razão Social *</label>
+                                <input type="text" class="form-input" id="nomeCliente" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">CPF/CNPJ *</label>
+                                <input type="text" class="form-input" id="documentoCliente" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Email *</label>
+                                <input type="email" class="form-input" id="emailCliente" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Telefone</label>
+                                <input type="tel" class="form-input" id="telefoneCliente">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">CEP</label>
+                                <input type="text" class="form-input" id="cepCliente">
+                            </div>
                         </div>
                         
                         <div class="form-group">
-                            <label class="form-label">CPF/CNPJ *</label>
-                            <input type="text" class="form-input" id="documentoCliente" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label">Email</label>
-                            <input type="email" class="form-input" id="emailCliente">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label">Telefone</label>
-                            <input type="tel" class="form-input" id="telefoneCliente">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label">Endereço</label>
-                            <textarea class="form-input" id="enderecoCliente" rows="3"></textarea>
+                            <label class="form-label">Endereço Completo</label>
+                            <input type="text" class="form-input" id="enderecoCliente" placeholder="Rua, número, bairro, cidade, estado">
                         </div>
                     </form>
                 </div>
-                
+
                 <!-- Adicionar Itens -->
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Adicionar Itens</h3>
                     </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">Buscar Peça</label>
-                        <input type="text" class="form-input" id="buscaPeca" placeholder="Digite código ou nome da peça">
-                        <div id="sugestoesPecas" class="search-suggestions"></div>
-                    </div>
-                    
-                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;">
+                    <div class="form-row">
                         <div class="form-group">
-                            <label class="form-label">Quantidade</label>
-                            <input type="number" class="form-input" id="quantidade" min="1" value="1">
+                            <label class="form-label">Buscar Peça</label>
+                            <input type="text" class="form-input" id="buscaPeca" placeholder="Digite código ou nome">
+                            <div id="sugestoesPecas" class="search-suggestions"></div>
                         </div>
                         
                         <div class="form-group">
-                            <label class="form-label">Preço Unit. (R$)</label>
-                            <input type="number" class="form-input" id="precoUnitario" step="0.01" min="0">
+                            <label class="form-label">Quantidade</label>
+                            <input type="number" class="form-input" id="quantidadeItem" min="1" value="1">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Preço Unitário (R$)</label>
+                            <input type="number" class="form-input" id="precoItem" step="0.01" min="0">
                         </div>
                         
                         <div class="form-group">
                             <label class="form-label">Desconto (%)</label>
-                            <input type="number" class="form-input" id="desconto" min="0" max="100" value="0">
+                            <input type="number" class="form-input" id="descontoItem" min="0" max="100" value="0">
                         </div>
+                        
+                        <button type="button" class="btn" onclick="adicionarItem()">Adicionar Item</button>
                     </div>
-                    
-                    <button type="button" class="btn" onclick="adicionarItem()">Adicionar Item</button>
                 </div>
-                
-                <!-- Lista de Itens -->
+
+                <!-- Itens da Nota -->
                 <div class="card" style="grid-column: span 2;">
                     <div class="card-header">
                         <h3 class="card-title">Itens da Nota Fiscal</h3>
+                        <div class="card-actions">
+                            <span id="totalItens">0 itens</span>
+                        </div>
                     </div>
-                    
                     <div class="table-container">
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th>Código</th>
                                     <th>Descrição</th>
-                                    <th>Qtd</th>
+                                    <th>Quantidade</th>
                                     <th>Preço Unit.</th>
                                     <th>Desconto</th>
                                     <th>Total</th>
                                     <th>Ações</th>
                                 </tr>
                             </thead>
-                            <tbody id="itensNota">
+                            <tbody id="tabelaItens">
                                 <tr>
-                                    <td colspan="7" style="text-align: center; color: #6b7280; padding: 40px;">
+                                    <td colspan="7" style="text-align: center; padding: 20px; color: #6b7280;">
                                         Nenhum item adicionado
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    
-                    <div style="margin-top: 20px; padding: 20px; background: #f8fafc; border-radius: 8px;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                </div>
+
+                <!-- Resumo da Nota -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Resumo da Nota</h3>
+                    </div>
+                    <div style="padding: 20px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
                             <span>Subtotal:</span>
-                            <span id="subtotal">R$ 0,00</span>
+                            <span id="subtotalNota">R$ 0,00</span>
                         </div>
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
                             <span>Desconto Total:</span>
                             <span id="descontoTotal">R$ 0,00</span>
                         </div>
-                        <div style="display: flex; justify-content: space-between; font-weight: 600; font-size: 18px; border-top: 1px solid #e5e7eb; padding-top: 8px;">
-                            <span>Total Geral:</span>
-                            <span id="totalGeral">R$ 0,00</span>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                            <span>Valor dos Produtos:</span>
+                            <span id="valorProdutos">R$ 0,00</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                            <span>ICMS (18%):</span>
+                            <span id="icmsNota">R$ 0,00</span>
+                        </div>
+                        <hr style="margin: 10px 0;">
+                        <div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 1.2em;">
+                            <span>Total da Nota:</span>
+                            <span id="totalNota">R$ 0,00</span>
                         </div>
                     </div>
-                    
-                    <div style="margin-top: 20px; display: flex; gap: 12px;">
-                        <button type="button" class="btn" onclick="gerarNotaFiscal()">Gerar Nota Fiscal</button>
-                        <button type="button" class="btn btn-secondary" onclick="limparNota()">Limpar Tudo</button>
+                </div>
+
+                <!-- Ações -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Emitir Nota Fiscal</h3>
+                    </div>
+                    <div style="padding: 20px;">
+                        <button type="button" class="btn" onclick="emitirNota()" style="width: 100%; margin-bottom: 10px;">
+                            Gerar Nota Fiscal
+                        </button>
+                        <button type="button" class="btn btn-secondary" onclick="limparNota()" style="width: 100%;">
+                            Limpar Nota
+                        </button>
                     </div>
                 </div>
             </div>
         </main>
     </div>
 
-    <!-- Modal de Nota Fiscal -->
-    <div id="modalNota" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000;">
-        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 30px; border-radius: 12px; max-width: 800px; width: 90%; max-height: 90%; overflow-y: auto;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                <h2>Nota Fiscal de Venda</h2>
-                <button onclick="fecharModal()" style="background: none; border: none; font-size: 24px; cursor: pointer;">&times;</button>
-            </div>
-            
-            <div id="conteudoNota"></div>
-            
-            <div style="margin-top: 20px; display: flex; gap: 12px; justify-content: flex-end;">
-                <button class="btn btn-secondary" onclick="fecharModal()">Fechar</button>
-                <button class="btn" onclick="imprimirNota()">Imprimir</button>
-                <button class="btn" onclick="salvarPDF()">Salvar PDF</button>
-            </div>
-        </div>
-    </div>
-
+    <script src="../js/ai-search.js"></script>
     <script src="../js/emissao-notas.js"></script>
 </body>
 </html>
