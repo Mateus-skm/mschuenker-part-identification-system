@@ -69,6 +69,7 @@
                         <path d="M9 10H13M9 14H13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                     </svg>
                 </button>
+                <button class="btn" id="btnAbrirModalCadastro" style="margin-right: 12px;">Cadastrar Peça</button>
                 <button class="logout-btn" id="logoutBtn">Sair</button>
             </div>
         </header>
@@ -162,6 +163,14 @@
                     </svg>
                     Manutenção
                 </button>
+                <button class="nav-item" data-page="emissao-notas">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="currentColor" stroke-width="2"/>
+                        <path d="M14 2V8H20" stroke="currentColor" stroke-width="2"/>
+                        <path d="M16 13H8M16 17H8M10 9H8" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    Emissão de Notas
+                </button>
             </nav>
         </aside>
 
@@ -173,8 +182,71 @@
         </main>
     </div>
 
+    <!-- Modal Cadastro de Peças -->
+    <div id="modalCadastroPeca" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close" id="closeModalCadastro">&times;</span>
+            <h2>Cadastro Rápido de Peça</h2>
+            <form id="formCadastroModal">
+                <div class="form-group">
+                    <label for="modalTipoPeca">Tipo de Peça *</label>
+                    <select id="modalTipoPeca" class="form-select" required>
+                        <option value="">Selecione</option>
+                        <option value="parafuso">Parafuso</option>
+                        <option value="porca">Porca</option>
+                        <option value="arruela">Arruela</option>
+                        <option value="eletrodo">Eletrodo</option>
+                        <option value="equipamento">Equipamento</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="modalCodigoPeca">Código *</label>
+                    <input type="text" id="modalCodigoPeca" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="modalNomePeca">Nome *</label>
+                    <input type="text" id="modalNomePeca" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="modalMaterial">Material</label>
+                    <input type="text" id="modalMaterial" class="form-input">
+                </div>
+                <div class="form-group">
+                    <label for="modalDiametro">Diâmetro (mm)</label>
+                    <input type="number" id="modalDiametro" class="form-input" step="0.1">
+                </div>
+                <div class="form-group">
+                    <label for="modalComprimento">Comprimento (mm)</label>
+                    <input type="number" id="modalComprimento" class="form-input" step="0.1">
+                </div>
+                <div class="form-group">
+                    <label for="modalRosca">Rosca</label>
+                    <input type="text" id="modalRosca" class="form-input">
+                </div>
+                <div class="form-group">
+                    <label for="modalEstoque">Estoque</label>
+                    <input type="number" id="modalEstoque" class="form-input" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="modalPreco">Preço Unitário (R$)</label>
+                    <input type="number" id="modalPreco" class="form-input" step="0.01" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="modalFornecedor">Fornecedor</label>
+                    <input type="text" id="modalFornecedor" class="form-input">
+                </div>
+                <div class="form-group">
+                    <label for="modalDescricao">Descrição</label>
+                    <textarea id="modalDescricao" class="form-input" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn">Cadastrar Peça</button>
+            </form>
+        </div>
+    </div>
+
     <script src="js/script.js"></script>
     <script src="js/dashboard.js"></script>
     <script src="js/ai-search.js"></script>
+    <script src="js/dados-exemplo.js"></script>
 </body>
 </html>
