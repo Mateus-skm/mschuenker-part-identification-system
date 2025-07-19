@@ -27,28 +27,46 @@
             </div>
             
             <div class="header-right">
-                <button class="user-menu">
-                    <span>Usuário</span>
-                </button>
+                <button class="btn" onclick="window.location.href='../index.html'">Voltar ao Dashboard</button>
                 <button class="logout-btn" onclick="window.location.href='../index.html'">Sair</button>
             </div>
         </header>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="nav-menu">
+                <button class="nav-item" onclick="window.location.href='../index.html'">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke="currentColor" stroke-width="2"/>
+                        <path d="M9 22V12H15V22" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    Dashboard
+                </button>
+                <button class="nav-item active">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="currentColor" stroke-width="2"/>
+                        <path d="M14 2V8H20" stroke="currentColor" stroke-width="2"/>
+                        <path d="M16 13H8M16 17H8M10 9H8" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    Cadastro de Peças
+                </button>
+            </nav>
+        </aside>
 
         <!-- Main Content -->
         <main class="main-content">
             <div class="page-header">
                 <h1 class="page-title">Cadastro de Peças</h1>
-                <p class="page-description">Adicione novas peças ao sistema</p>
+                <p class="page-description">Adicione novas peças ao sistema com formulário completo</p>
             </div>
-            
+
             <div class="content-grid">
-                <div class="card" style="grid-column: span 2;">
+                <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Informações da Peça</h3>
+                        <h3 class="card-title">Formulário de Cadastro</h3>
                     </div>
-                    
-                    <form id="cadastroPecaForm">
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <form id="formCadastroPeca">
+                        <div class="form-row">
                             <div class="form-group">
                                 <label class="form-label">Tipo de Peça *</label>
                                 <select class="form-select" id="tipoPeca" required>
@@ -62,77 +80,111 @@
                             </div>
                             
                             <div class="form-group">
-                                <label class="form-label">Código da Peça *</label>
-                                <input type="text" class="form-input" id="codigoPeca" placeholder="Ex: PAR001" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label class="form-label">Nome da Peça *</label>
-                                <input type="text" class="form-input" id="nomePeca" placeholder="Ex: Parafuso Sextavado" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label class="form-label">Material</label>
-                                <input type="text" class="form-input" id="material" placeholder="Ex: Aço Inox">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label class="form-label">Diâmetro (mm)</label>
-                                <input type="number" class="form-input" id="diametro" placeholder="Ex: 8" step="0.1">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label class="form-label">Comprimento (mm)</label>
-                                <input type="number" class="form-input" id="comprimento" placeholder="Ex: 25" step="0.1">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label class="form-label">Rosca</label>
-                                <input type="text" class="form-input" id="rosca" placeholder="Ex: M8x1.25">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label class="form-label">Estoque Inicial</label>
-                                <input type="number" class="form-input" id="estoque" placeholder="Ex: 100" min="0">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label class="form-label">Preço Unitário (R$)</label>
-                                <input type="number" class="form-input" id="preco" placeholder="Ex: 2.50" step="0.01" min="0">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label class="form-label">Fornecedor</label>
-                                <input type="text" class="form-input" id="fornecedor" placeholder="Nome do fornecedor">
+                                <label class="form-label">Código *</label>
+                                <input type="text" class="form-input" id="codigoPeca" required readonly>
+                                <button type="button" class="btn btn-secondary" onclick="gerarCodigoAutomatico()" style="margin-top: 4px; font-size: 12px;">Gerar Código</button>
                             </div>
                         </div>
                         
                         <div class="form-group">
-                            <label class="form-label">Descrição/Aplicação</label>
-                            <textarea class="form-input" id="descricao" rows="3" placeholder="Descrição detalhada da peça e suas aplicações"></textarea>
+                            <label class="form-label">Nome da Peça *</label>
+                            <input type="text" class="form-input" id="nomePeca" required>
                         </div>
                         
-                        <div style="display: flex; gap: 12px; margin-top: 24px;">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Material</label>
+                                <input type="text" class="form-input" id="materialPeca" placeholder="Ex: Aço Inox, Aço Carbono">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Diâmetro (mm)</label>
+                                <input type="number" class="form-input" id="diametroPeca" step="0.1" placeholder="Ex: 8.0">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Comprimento (mm)</label>
+                                <input type="number" class="form-input" id="comprimentoPeca" step="0.1" placeholder="Ex: 25.0">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Rosca</label>
+                                <input type="text" class="form-input" id="roscaPeca" placeholder="Ex: M8x1.25">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Estoque *</label>
+                                <input type="number" class="form-input" id="estoquePeca" min="0" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Preço Unitário (R$) *</label>
+                                <input type="number" class="form-input" id="precoPeca" step="0.01" min="0" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Fornecedor</label>
+                                <input type="text" class="form-input" id="fornecedorPeca" placeholder="Ex: Metalúrgica Silva">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Localização</label>
+                                <input type="text" class="form-input" id="localizacaoPeca" placeholder="Ex: Prateleira A1">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Descrição</label>
+                            <textarea class="form-input" id="descricaoPeca" rows="3" placeholder="Descrição detalhada da peça..."></textarea>
+                        </div>
+                        
+                        <div class="form-actions">
                             <button type="submit" class="btn">Cadastrar Peça</button>
                             <button type="button" class="btn btn-secondary" onclick="limparFormulario()">Limpar</button>
                         </div>
                     </form>
                 </div>
-                
+
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Peças Cadastradas Recentemente</h3>
+                        <h3 class="card-title">Peças Cadastradas</h3>
+                        <div class="card-actions">
+                            <input type="text" class="form-input" id="buscaPecas" placeholder="Buscar peças..." style="margin: 0;">
+                        </div>
                     </div>
-                    <div id="pecasRecentes">
-                        <p style="color: #6b7280; text-align: center; padding: 20px;">
-                            Nenhuma peça cadastrada ainda
-                        </p>
+                    <div class="table-container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Código</th>
+                                    <th>Tipo</th>
+                                    <th>Nome</th>
+                                    <th>Estoque</th>
+                                    <th>Preço</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="listaPecas">
+                                <tr>
+                                    <td colspan="6" style="text-align: center; padding: 20px; color: #6b7280;">
+                                        Carregando peças...
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </main>
     </div>
 
+    <script src="../js/ai-search.js"></script>
     <script src="../js/cadastro-pecas.js"></script>
 </body>
 </html>
