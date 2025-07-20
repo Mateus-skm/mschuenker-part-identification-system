@@ -1,115 +1,84 @@
-# M.Schuenker - Sistema de Identificação de Peças
+# 🏭 M.Schuenker - Sistema de Identificação de Peças
 
-Sistema completo para gestão de peças, estoque, vendas e emissão de notas fiscais.
+Sistema completo para gestão de peças, estoque, vendas e emissão de notas fiscais. Desenvolvido com HTML5, CSS3 e JavaScript puro.
 
-## 🚀 **Como Usar o Sistema**
+![M.Schuenker Dashboard](https://via.placeholder.com/800x400/1e40af/ffffff?text=M.Schuenker+Sistema+de+Peças)
 
-### 1. **Acesso ao Sistema**
-- Abra o arquivo `index.html` no navegador
-- Faça login com qualquer email válido e senha
-- Exemplo: `admin@mschuenker.com` / `admin123`
+## 🚀 **Demonstração Online**
+Acesse a demonstração ao vivo: [🔗 Clique aqui](https://seu-usuario.github.io/mschuenker-sistema)
 
-### 2. **Dashboard Principal**
-- **Busca IA**: Digite "rosca 8mm", "parafuso", etc. para busca inteligente
-- **Menu Lateral**: Navegue pelos 9 módulos principais
-- **Cards do Dashboard**: Acesso rápido às funcionalidades
+## 📋 **Funcionalidades**
 
-## 📋 **Módulos Disponíveis**
-
-### **Gestão de Peças:**
-- **Parafusos** - Filtros por rosca, diâmetro, comprimento
+### **✅ Módulos Principais**
+- **Dashboard** - Visão geral do sistema
+- **Parafusos** - Gestão por tipo, tamanho e rosca
 - **Porcas** - Catálogo com especificações técnicas
-- **Arruelas** - Organizadas por diâmetro interno/externo
+- **Arruelas** - Organizadas por diâmetro
 - **Eletrodos** - Catálogo para soldagem
 - **Equipamentos** - Gestão de ferramentas
-
-### **Operações:**
-- **Catálogo** - Visualização completa por categoria
-- **Cadastro de Peças** - Formulário para adicionar novas peças
-- **Emissão de Notas** - Gerar notas fiscais de venda
-
-### **Administrativo:**
-- **Financeiro** - Controle de receitas e despesas
-- **Notas Fiscais** - Upload e processamento com IA
+- **Catálogo** - Visualização completa
+- **Financeiro** - Controle de contas
+- **Notas Fiscais** - Emissão completa
 - **Etiquetas** - Geração com QR Code
-- **Manutenção** - Compatibilidade de peças por máquina
+- **Manutenção** - Compatibilidade de peças
 
-## 🔧 **Como Cadastrar Peças**
+### **🤖 Inteligência Artificial**
+- **Busca inteligente** - Reconhece padrões como "rosca 8mm"
+- **Sugestões automáticas** - Baseadas no estoque
+- **Navegação por voz** - Digite "financeiro" para ir direto
 
-1. **Acesse**: Dashboard → "Cadastro de Peças"
-2. **Preencha**:
-   - Tipo de Peça (obrigatório)
-   - Código (auto-gerado ou manual)
-   - Nome da Peça (obrigatório)
-   - Especificações técnicas
-   - Estoque inicial
-   - Preço unitário
-3. **Clique**: "Cadastrar Peça"
+### **💰 Emissão de Notas Fiscais**
+- Cadastro completo de clientes
+- Cálculo automático de impostos
+- Visualização em PDF
+- Histórico de notas emitidas
 
-### **Códigos Automáticos:**
-- **PAR001, PAR002...** - Parafusos
-- **POR001, POR002...** - Porcas
-- **ARR001, ARR002...** - Arruelas
-- **ELE001, ELE002...** - Eletrodos
-- **EQP001, EQP002...** - Equipamentos
+## 🎯 **Demonstração Rápida**
 
-## 💰 **Como Emitir Notas Fiscais**
+### **1. Acesso ao Sistema**
+```bash
+# Clone o repositório
+git clone https://github.com/seu-usuario/mschuenker-sistema.git
 
-1. **Acesse**: Dashboard → "Emissão de Notas"
-2. **Dados do Cliente**:
-   - Nome/Razão Social (obrigatório)
-   - CPF/CNPJ (obrigatório)
-   - Email, telefone, endereço
-3. **Adicionar Itens**:
-   - Busque a peça por código ou nome
-   - Defina quantidade e preço
-   - Aplique desconto se necessário
-   - Clique "Adicionar Item"
-4. **Gerar Nota**:
-   - Revise os itens e totais
-   - Clique "Gerar Nota Fiscal"
-   - Imprima ou salve em PDF
+# Entre na pasta
+cd mschuenker-sistema
 
-## 🤖 **Busca Inteligente com IA**
+# Abra o index.html no navegador
+# Ou use um servidor local:
+python -m http.server 8080
+```
 
-### **Exemplos de Busca:**
-- `rosca 8mm` → Sugere parafusos e porcas M8
-- `parafuso sextavado` → Mostra parafusos sextavados
-- `arruela 10mm` → Arruelas com diâmetro 10mm
-- `eletrodo soldagem` → Catálogo de eletrodos
-- `financeiro` → Vai para módulo financeiro
+### **2. Login de Teste**
+- **Email**: admin@mschuenker.com
+- **Senha**: admin123
+- Ou use qualquer email válido
 
-### **Funcionalidades IA:**
-- **Reconhecimento de padrões** (M8, 8mm, rosca)
-- **Sugestões automáticas** baseadas no estoque
-- **Navegação inteligente** para módulos corretos
-- **Busca por aplicação** (chassi, soldagem, etc.)
+### **3. Funcionalidades para Testar**
 
-## 💾 **Armazenamento de Dados**
+#### **📦 Cadastro de Peças**
+1. Clique em "Cadastrar Peça" no dashboard
+2. Selecione o tipo (ex: Parafuso)
+3. O código será gerado automaticamente (ex: PAR001)
+4. Preencha os dados e salve
 
-### **LocalStorage (Navegador):**
-- `pecasCadastradas` - Peças do sistema
-- `historicoNotas` - Notas fiscais emitidas
-- `bancoDadosIA` - Base para busca inteligente
+#### **🧾 Emissão de Notas**
+1. Vá para "Emissão de Notas"
+2. Cadastre um cliente
+3. Busque peças pelo nome ou código
+4. Adicione itens e gere a nota
 
-### **Para Produção:**
-- Integrar com banco de dados (MySQL, PostgreSQL)
-- Implementar APIs REST
-- Adicionar autenticação real
-- Backup automático
+#### **🔍 Busca Inteligente**
+- Digite "rosca 8mm" → Mostra parafusos M8
+- Digite "parafuso sextavado" → Filtra por tipo
+- Digite "financeiro" → Vai direto ao módulo
 
-## 🎨 **Personalização**
+## 🛠️ **Tecnologias Utilizadas**
 
-### **Cores e Tema:**
-- **Header**: Azul petróleo (editável em `css/dashboard.css`)
-- **Cards**: Branco com sombras suaves
-- **Botões**: Gradiente azul
-- **Fonte**: Inter (Google Fonts)
-
-### **Logo da Empresa:**
-- Edite o texto "M.Schuenker" no header
-- Adicione logo real em `assets/`
-- Atualize informações da empresa nas notas fiscais
+- **Frontend**: HTML5, CSS3, JavaScript ES6+
+- **Estilos**: CSS Grid, Flexbox, Design Responsivo
+- **Armazenamento**: LocalStorage (navegador)
+- **Fontes**: Google Fonts (Inter)
+- **Ícones**: SVG inline (sem dependências externas)
 
 ## 📱 **Responsividade**
 
@@ -118,43 +87,102 @@ Sistema completo para gestão de peças, estoque, vendas e emissão de notas fis
 - **Mobile**: Interface otimizada para toque
 - **Impressão**: Notas fiscais formatadas
 
-## 🔒 **Segurança**
+## 🗂️ **Estrutura de Arquivos**
 
-### **Implementado:**
-- Validação de formulários
-- Sanitização de dados
-- Controle de estoque automático
+```
+mschuenker-sistema/
+├── index.html              # Página principal
+├── README.md              # Documentação
+├── .gitignore            # Arquivos ignorados
+├── css/
+│   ├── styles.css        # Estilos globais
+│   └── dashboard.css     # Estilos do dashboard
+├── js/
+│   ├── script.js         # Login e navegação
+│   ├── dashboard.js      # Módulos do dashboard
+│   ├── ai-search.js      # Busca inteligente
+│   ├── cadastro-pecas.js # Sistema de cadastro
+│   ├── emissao-notas.js  # Emissão de notas
+│   ├── modal-cadastro.js # Modal de cadastro
+│   └── dados-exemplo.js  # Dados de teste
+├── pages/
+│   ├── cadastro-pecas.html
+│   └── emissao-notas.html
+└── assets/               # Imagens e recursos
+```
 
-### **Para Produção:**
-- Autenticação JWT
-- Criptografia de dados
-- Logs de auditoria
-- Backup seguro
+## 🚀 **Publicação no GitHub Pages**
 
-## 🚀 **Próximos Passos**
+### **Método 1: GitHub Desktop (Recomendado)**
+1. **Baixe o GitHub Desktop**: https://desktop.github.com/
+2. **Clone este repositório** ou crie um novo
+3. **Faça upload dos arquivos** para a branch `main`
+4. **Ative o GitHub Pages**:
+   - Vá em Settings → Pages
+   - Source: Deploy from a branch
+   - Branch: main
+   - Clique em Save
 
-1. **Integração com APIs**:
-   - Consulta de CEP
-   - Validação de CPF/CNPJ
-   - Cotação de moedas
+### **Método 2: Linha de Comando**
+```bash
+# 1. Inicialize o repositório
+git init
+git add .
+git commit -m "Primeira versão do sistema M.Schuenker"
 
-2. **Relatórios Avançados**:
-   - Gráficos de vendas
-   - Análise de estoque
-   - Relatórios financeiros
+# 2. Crie no GitHub e adicione o remote
+git remote add origin https://github.com/seu-usuario/mschuenker-sistema.git
+git branch -M main
+git push -u origin main
 
-3. **Funcionalidades Extras**:
-   - Chat com IA
-   - Scanner de QR Code
-   - Integração com e-commerce
+# 3. Ative o GitHub Pages nas configurações do repositório
+```
 
-## 📞 **Suporte**
+### **Método 3: Upload Direto**
+1. **Crie um novo repositório** no GitHub
+2. **Faça upload dos arquivos** via interface web
+3. **Ative o GitHub Pages** nas configurações
 
-Para dúvidas ou customizações:
-- Sistema desenvolvido com HTML5, CSS3, JavaScript
-- Compatível com todos os navegadores modernos
-- Código limpo e documentado para fácil manutenção
+## 📊 **Dados de Exemplo**
+
+O sistema já vem com dados de exemplo:
+- **5 peças cadastradas** (parafusos, porcas, arruelas, eletrodos, equipamentos)
+- **1 nota fiscal emitida** para teste
+- **Códigos automáticos** funcionando (PAR001, POR001, etc.)
+
+## 🔧 **Personalização**
+
+### **Cores e Tema**
+Edite `css/styles.css` para personalizar:
+```css
+:root {
+  --primary-color: #1e40af;
+  --secondary-color: #3b82f6;
+  --accent-color: #06b6d4;
+}
+```
+
+### **Logo da Empresa**
+Substitua o texto "M.Schuenker" no header por sua logo:
+```html
+<img src="assets/logo.png" alt="Sua Empresa" style="height: 40px;">
+```
+
+### **Informações da Empresa**
+Atualize os dados nas notas fiscais editando `js/emissao-notas.js`
+
+## 📞 **Suporte e Contribuições**
+
+- **Issues**: Reporte bugs e sugira melhorias
+- **Pull Requests**: Contribuições são bem-vindas!
+- **Discussions**: Tire dúvidas e compartilhe ideias
+
+## 📝 **Licença**
+
+Este projeto está sob a licença MIT. Sinta-se livre para usar, modificar e distribuir.
 
 ---
 
-**Sistema M.Schuenker v1.0** - Pronto para uso em produção! 🎉
+**Desenvolvido com ❤️ para a comunidade de gestão industrial**
+
+**🔗 Acesse agora**: [https://seu-usuario.github.io/mschuenker-sistema](https://seu-usuario.github.io/mschuenker-sistema)
